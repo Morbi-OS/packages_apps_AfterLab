@@ -179,4 +179,8 @@
     <!-- Status bar -->
     <string name="status_bar_title">Status bar</string>
     <string name="status_bar_system_icons_summary">Control which status bar icons are shown</string>
+
+    <!-- Double tap to sleep on status bar or lockscreen -->
+    <string name="status_bar_double_tap_to_sleep_title">Tap to sleep</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Double-tap on the status bar or lockscreen to turn off the display</string>
 </resources>
