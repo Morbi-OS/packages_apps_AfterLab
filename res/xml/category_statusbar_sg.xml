@@ -16,4 +16,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
+    <Preference
+        android:key="icon_manager"
+        android:title="@string/status_bar_title"
+        android:summary="@string/status_bar_system_icons_summary">
+        <intent android:action="com.android.settings.action.STATUS_BAR_TUNER" /> 
+    </Preference>
+
 </PreferenceScreen>
