@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2020 Project-Awaken
- * Copyright (C) 2023-2024 AfterLife Project
+ * Copyright (C) 2023-2025 AfterLife Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,114 +16,34 @@
  */
 package com.afterlife.afterlab;
 
-import android.app.Activity;
-import android.content.ContentResolver;
 import android.content.Context;
-import android.content.res.Resources;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.graphics.Color;
-import android.hardware.fingerprint.FingerprintManager;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.UserHandle;
-import android.os.RemoteException;
-import android.os.ServiceManager;
-import android.provider.SearchIndexableResource;
-import android.provider.Settings;
 
-import androidx.preference.ListPreference;
 import androidx.preference.Preference;
-import androidx.preference.PreferenceCategory;
-import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreferenceCompat;
-import android.view.IWindowManager;
-import android.view.View;
-import android.view.WindowManagerGlobal;
-
-import com.android.internal.util.everest.udfps.CustomUdfpsUtils;
-import com.android.internal.util.afterlife.OmniJawsClient;
-import com.android.internal.logging.nano.MetricsProto;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
-import com.android.settingslib.search.Indexable;
 import com.android.settingslib.search.SearchIndexable;
+import com.android.settingslib.search.Indexable;
 
-import java.util.ArrayList;
+import com.android.internal.logging.nano.MetricsProto;
+
 import java.util.Arrays;
 import java.util.List;
 
 @SearchIndexable
-public class LockScreen extends SettingsPreferenceFragment 
-            implements Preference.OnPreferenceChangeListener {
-        private static final String UDFPS_CATEGORY = "udfps_category";
-        private PreferenceCategory mUdfpsCategory;
-        private static final String FINGERPRINT_VIB = "fingerprint_success_vib";
-        private static final String KEY_WEATHER = "lockscreen_weather_enabled";
-
-        private FingerprintManager mFingerprintManager;
-        private SwitchPreferenceCompat mFingerprintVib;
-        private Preference mWeather;
-        private OmniJawsClient mWeatherClient;
+public class LockScreen extends SettingsPreferenceFragment {
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.category_lockscreen);
+
         PreferenceScreen prefSet = getPreferenceScreen();
-        final Resources res = getResources();
-        final PreferenceScreen prefScreen = getPreferenceScreen();
-	mUdfpsCategory = findPreference(UDFPS_CATEGORY);
-	//Handle NPE on UdfpsCategory being null
-        if (mUdfpsCategory != null && !CustomUdfpsUtils.hasUdfpsSupport(getContext())) {
-            prefScreen.removePreference(mUdfpsCategory);
-        }
-        
-    mFingerprintManager = (FingerprintManager) getActivity().getSystemService(Context.FINGERPRINT_SERVICE);
 
-        mWeather = (Preference) findPreference(KEY_WEATHER);
-        mWeatherClient = new OmniJawsClient(getContext());
-        updateWeatherSettings();
-
-        mFingerprintVib = (SwitchPreferenceCompat) findPreference(FINGERPRINT_VIB);
-        if (mFingerprintManager == null) {
-            prefScreen.removePreference(mFingerprintVib);
-        } else {
-            mFingerprintVib.setChecked((Settings.System.getInt(getContentResolver(),
-                Settings.System.FINGERPRINT_SUCCESS_VIB, 1) == 1));
-            mFingerprintVib.setOnPreferenceChangeListener(this);
-        }
-    }
-    
-    @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
-        final Context context = getContext();
-        final ContentResolver resolver = context.getContentResolver();
-
-        if (preference == mFingerprintVib) {
-            boolean value = (Boolean) newValue;
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.FINGERPRINT_SUCCESS_VIB, value ? 1 : 0);
-            return true;
-        }
-        return false;
-    }  
-
-    private void updateWeatherSettings() {
-        if (mWeatherClient == null || mWeather == null) return;
-
-        boolean weatherEnabled = mWeatherClient.isOmniJawsEnabled();
-        mWeather.setEnabled(weatherEnabled);
-        mWeather.setSummary(weatherEnabled ? R.string.lockscreen_weather_summary :
-            R.string.lockscreen_weather_enabled_info);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        updateWeatherSettings();
+        // Placeholder: add your preferences initialization here
     }
 
     @Override

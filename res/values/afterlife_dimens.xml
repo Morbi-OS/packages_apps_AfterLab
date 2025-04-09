@@ -18,25 +18,6 @@
     <!-- Dashboard tile image margin start / end -->
     <dimen name="dashboard_tile_image_margin">18dp</dimen>
 
-    <!-- LS Widgets -->
-    <dimen name="kg_widget_margin_vertical">10dp</dimen>
-    <dimen name="kg_widgets_margin_horizontal">8dp</dimen>
-    <dimen name="kg_widgets_main_margin_start">12dp</dimen>
-    <dimen name="kg_widgets_main_margin_end">12dp</dimen>
-    <dimen name="kg_widget_circle_size">64dp</dimen>
-    <dimen name="kg_widgets_icon_padding">20dp</dimen>
-    <dimen name="kg_main_widgets_icon_padding">20dp</dimen>
-    <dimen name="lockscreen_preview_height_all">580dp</dimen>
-    <dimen name="lockscreen_preview_height_with_widgets">480dp</dimen>
-    <dimen name="lockscreen_preview_height_with_no_widgets">380dp</dimen>
-
-    <!-- Sound Engine -->
-    <dimen name="sound_engine_profile_card_height">128dp</dimen>
-    <dimen name="sound_engine_profile_card_radius">22dp</dimen>
-    <dimen name="sound_engine_label_bottom">12dp</dimen>
-    <dimen name="sound_engine_label_start">12dp</dimen>
-    <dimen name="selected_card_border_width">1.5dp</dimen>
-
     <!-- SwitchBar sub settings margin start / end -->
     <dimen name="switchbar_subsettings_margin_start">72dp</dimen>
     <dimen name="switchbar_subsettings_margin_end">16dp</dimen>

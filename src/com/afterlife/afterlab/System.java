@@ -17,62 +17,37 @@
  */
 package com.afterlife.afterlab;
 
-import android.content.ContentResolver;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.UserHandle;
-import android.provider.SearchIndexableResource;
-import android.provider.Settings;
 
-import androidx.preference.ListPreference;
 import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
 
 import com.android.internal.logging.nano.MetricsProto;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
-import com.android.settingslib.search.Indexable;
 import com.android.settingslib.search.SearchIndexable;
 
-import com.afterlife.support.preference.SystemSettingListPreference;
-import declan.prjct.utils.SettingsUtils;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @SearchIndexable
-public class System extends SettingsPreferenceFragment 
-            implements Preference.OnPreferenceChangeListener {
-
-    private static final String KEY_DASHBOARD_STYLE = "afl_dashboard_style";
-    private SystemSettingListPreference mDashboardStyle;
+public class System extends SettingsPreferenceFragment
+        implements Preference.OnPreferenceChangeListener {
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.category_system);
         PreferenceScreen prefSet = getPreferenceScreen();
-        final Resources res = getResources();
-        final PreferenceScreen prefScreen = getPreferenceScreen();
 
-        mDashboardStyle = findPreference(KEY_DASHBOARD_STYLE);
-        mDashboardStyle.setOnPreferenceChangeListener(this);
+        // Placeholder: Add system-level tweaks or experimental flags here
     }
-    
+
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-    	if (preference == mDashboardStyle) {
-    	    SettingsUtils.showSettingsRestartDialog(getActivity());
-            return true;
-        }
         return false;
     }
 

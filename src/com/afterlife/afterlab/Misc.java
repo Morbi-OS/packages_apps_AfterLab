@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2020 Project-Awaken
- * Copyright (C) 2023-2024 AfterLife Project
+ * Copyright (C) 2023-2025 AfterLife Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,70 +16,40 @@
  */
 package com.afterlife.afterlab;
 
-import android.content.ContentResolver;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.SystemProperties;
-import android.os.UserHandle;
-import android.provider.SearchIndexableResource;
-import android.provider.Settings;
 
-import androidx.preference.ListPreference;
 import androidx.preference.Preference;
-import androidx.preference.PreferenceCategory;
-import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
 
 import com.android.internal.logging.nano.MetricsProto;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
-import com.android.settingslib.search.Indexable;
 import com.android.settingslib.search.SearchIndexable;
+import com.android.settingslib.search.Indexable;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @SearchIndexable
-public class Misc extends SettingsPreferenceFragment 
-            implements Preference.OnPreferenceChangeListener {
+public class Misc extends SettingsPreferenceFragment
+        implements Preference.OnPreferenceChangeListener {
 
-        private static final String KEY_SOUND_CATEGORY = "sound_category";
-        private static final String KEY_DOLBY = "dolby_audio";
-    
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.category_misc);
         PreferenceScreen prefSet = getPreferenceScreen();
-        final Resources res = getResources();
-        final PreferenceScreen prefScreen = getPreferenceScreen();
 
-        boolean isDolbyEnabled = SystemProperties.getBoolean("ro.dolby.enabled", false);
-        setDolbyVisibility(isDolbyEnabled);
+        // Placeholder: Add your new experimental preferences here
     }
-    
+
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         return false;
-        }
-    private void setDolbyVisibility(boolean isDolbyEnabled) {
-        PreferenceCategory soundCategory = findPreference(KEY_SOUND_CATEGORY);
-        Preference dolbyMenu = findPreference(KEY_DOLBY);
-        if (soundCategory != null) {
-            soundCategory.setVisible(isDolbyEnabled);
-        }
-        
-        if (dolbyMenu != null) {
-            dolbyMenu.setVisible(isDolbyEnabled);
-        }
-    }  
+    }
 
     @Override
     public int getMetricsCategory() {
